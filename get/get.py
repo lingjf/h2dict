@@ -43,7 +43,7 @@ def youdao():
 
     index = 0
     for word in wordlist:
-        if not wordmap[word]:
+        if word not in wordmap2:
             r1 = __getone(word)
             r2 = __normalize(r1)
             wordmap2[word] = r2
@@ -161,7 +161,7 @@ def merge():
     with open('wordmap.json', 'w') as f:
         json.dump(wordmap, f, ensure_ascii=False)
 
-# youdao() # gen wordmap3.json
-# vocabulary() # gen wordmap3.json
-# sequence() # gen wordmap4.json
+youdao() # gen wordmap3.json
+vocabulary() # gen wordmap3.json
+sequence() # gen wordmap4.json
 merge() # gen wordmap.json

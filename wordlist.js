@@ -1,4 +1,4 @@
-var wordlist = [
+module.exports.wordlist = [
 "be",
 "he",
 "in",

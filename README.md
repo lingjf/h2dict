@@ -3,3 +3,12 @@
 
 npm link
 npm install h2dict -g
+ 
+
+#Exmples
+
+f staff
+f 'st?ff'
+f 10
+f 1000-1110
+f 1000/5

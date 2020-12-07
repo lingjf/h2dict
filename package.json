@@ -2,9 +2,6 @@
   "name": "h2dict",
   "version": "1.0.0",
   "main": "index.js",
-  "dependencies": {
-    "commander": "~2.9.0"
-  },
   "bin": {
     "f": "index.js"
   }

@@ -72,9 +72,17 @@ function short_explain(e) {
 	return a;
 }
 
-word = process.argv.splice(2)[0];
-
-if (isNumbers(word)) {
+var args = process.argv.splice(2)
+word = args[0];
+if (word == '-v') {
+	console.log("h2dict 1.0 Ling Jianfa https://github.com/lingjf/h2dict.git");
+} else if (word == '-h') {
+	console.log("f staff");
+	console.log("f 'st?ff' 使用通配符搜索单词");
+	console.log("f 10 列举前10常用的单词");
+	console.log("f 1000-1110 列举1000到1110常用的单词");
+	console.log("f 1000/5 列举1000到1005常用的单词");
+} else if (isNumbers(word)) {
 	var start = 0;
 	var end = 0;
 	if (word.indexOf("-") != -1) {
@@ -100,13 +108,19 @@ if (isNumbers(word)) {
 	});
 	console.log(r2);
 } else if (isWildCard(word)) {
+	e1 = 30000;
+	if (args[1]) {
+		e1 = parseInt(args[1]);
+	}
 	r3 = getWildcards(word);
 	r4 = {};
 	r3.forEach(function(x){
-		r4[x] = [
-			wordmap[x]["i"][1], 
-			short_explain(wordmap[x]["e"])
-		];
+		if (wordmap[x]["i"][1] < e1) {
+			r4[x] = [
+				wordmap[x]["i"][1], 
+				short_explain(wordmap[x]["e"])
+			];
+		}
 	});
 	console.log(r4);
 } else {

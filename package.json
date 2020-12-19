@@ -1,9 +1,11 @@
 {
   "name": "h2dict",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "repository": "http://registry.npmjs.org/h2dict",
   "main": "index.js",
   "bin": {
+    "h2dict": "index.js",
+    "dict": "index.js",
     "f": "index.js"
   }
 }

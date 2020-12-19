@@ -77,11 +77,11 @@ word = args[0];
 if (word == '-v') {
 	console.log("h2dict 1.0 Ling Jianfa https://github.com/lingjf/h2dict.git");
 } else if (word == '-h') {
-	console.log("f staff");
-	console.log("f 'st?ff' 使用通配符搜索单词");
-	console.log("f 10 列举前10常用的单词");
-	console.log("f 1000-1110 列举1000到1110常用的单词");
-	console.log("f 1000/5 列举1000到1005常用的单词");
+	console.log("h2dict/dict/f staff", "查询单词staff");
+	console.log("h2dict/dict/f 'st?ff' 使用通配符搜索单词");
+	console.log("h2dict/dict/f 10 列举前10常用的单词");
+	console.log("h2dict/dict/f 1000-1110 列举1000到1110常用的单词");
+	console.log("h2dict/dict/f 1000/5 列举1000到1005常用的单词");
 } else if (isNumbers(word)) {
 	var start = 0;
 	var end = 0;

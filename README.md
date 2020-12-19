@@ -8,12 +8,12 @@ npm install h2dict -g
 
 #Exmples
 
-f staff
+h2dict/dict/f staff 查询单词staff
 
-f 'st?ff'
+h2dict/dict/f 'st?ff' 使用通配符搜索单词
 
-f 10
+h2dict/dict/f 10 列举前10常用的单词
 
-f 1000-1110
+h2dict/dict/f 1000-1110 列举1000到1110常用的单词
 
-f 1000/5
+h2dict/dict/f 1000/5 列举1000到1005常用的单词

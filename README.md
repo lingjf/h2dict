@@ -1,13 +1,11 @@
-# h2dict
-程序员的英语字典
 
-# 特色功能：
-## 常用度指标
-## 模糊查询 (编辑距离、类SublimeText)
-## 形似词
-## 音似词
+# 特色功能
+*    常用度指标。
+*    模糊查询 (编辑距离、类SublimeText)，用于查找不能完全拼写出来的单词。
+*    形似词，用于对比区分拼写相近易混淆的单词。
+*    音似词，用于对比区分发音相近易混淆的单词。
 
-# 安装：
+# 安装
 npm link
 
 npm install h2dict -g
@@ -15,19 +13,42 @@ npm install h2dict -g
 
 # Exmples
 
-h2dict/dict/f staff #查询单词staff
+查询单词staff
+```Shell
+h2dict/dict/f staff 
+```
 
-h2dict/dict/f 'st?ff' #使用通配符搜索单词
+使用通配符搜索单词
+```Shell
+h2dict/dict/f 'st?ff' 
+```
 
-h2dict/dict/f 'st?ff' 1w #使用通配符搜索1万常用单词，默认显示20个
+使用通配符搜索1万常用单词，默认显示20个
+```Shell
+h2dict/dict/f 'st?ff' 1w 
+```
 
-h2dict/dict/f 'st?ff' 1w 3 #使用通配符搜索1万常用单词，并显示前3个
+使用通配符搜索1万常用单词，并显示前3个
+```Shell
+h2dict/dict/f 'st?ff' 1w 3 
+```
 
-h2dict/dict/f 10 #列举前10常用单词
+列举前10常用单词
+```Shell
+h2dict/dict/f 10 
+```
 
-h2dict/dict/f 1k 5 #列举1000到1005常用单词
+列举1000到1005常用单词
+```Shell
+h2dict/dict/f 1k 5 
+```
 
-ff stff 1w 3 #使用编辑距离算法，模糊搜索1万常用单词，并显示前3个
+使用编辑距离算法，模糊搜索1万常用单词，并显示前3个
+```Shell
+ff stff 1w 3 
+```
 
-fff stff 1w 3 #使用类SublimeText算法，模糊搜索1万常用单词，并显示前3个
-
+使用类SublimeText算法，模糊搜索1万常用单词，并显示前3个
+```Shell
+fff stff 1w 3 
+```

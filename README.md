@@ -8,6 +8,7 @@
 # 安装
 
 npm install h2dict -g # from npmjs.org
+
 npm link # from source code
 
 # Exmples

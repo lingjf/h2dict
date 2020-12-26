@@ -134,7 +134,7 @@ function show_words(words, a1, a2) {
 var args = process.argv;
 
 if (args[2] == '-v') {
-	console.log("h2dict 1.2 https://github.com/lingjf/h2dict.git");
+	console.log("h2dict 1.1.0 https://github.com/lingjf/h2dict.git");
 } else if (args[2] == '-h') {
 	console.log("h2dict/dict/f staff #查询单词staff");
 	console.log("h2dict/dict/f 'st?ff' #使用通配符搜索单词");

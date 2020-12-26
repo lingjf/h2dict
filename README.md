@@ -45,15 +45,15 @@ h2dict/dict/f 1k 5
 
 使用编辑距离算法模糊搜索，默认最多显示20个最匹配的单词
 ```Shell
-ff stff 
+h2dict/dict/f -e stff 
 ```
 
 使用编辑距离算法，在前1万常用单词中，模糊搜索，并显示前3个最匹配的单词
 ```Shell
-ff stff 1w 3 
+h2dict/dict/f -e stff 1w 3 
 ```
 
 使用类SublimeText矢量算法，在前1万常用单词中，模糊搜索，并显示前3个最匹配的单词
 ```Shell
-fff stff 1w 3 
+h2dict/dict/f -v stff 1w 3 
 ```

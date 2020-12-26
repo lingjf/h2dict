@@ -2,7 +2,8 @@
 
 var S1 = require('./lcs.js');
 var S2 = require('./levenshtein.js');
-var S3 = require('./double_metaphone.js');
+var S3 = require('./fts_fuzzy_match.js');
+var S4 = require('./double_metaphone.js');
 
 var wordlist = require('./wordlist.json');
 var wordmap = require('./wordmap.json');
@@ -22,11 +23,20 @@ function getSimilars(x) {
 	return h.sort(function(x,y){return y[1]-x[1];}).map(function(d){return {word:d[0], similarity:d[1]};});
 }
 
-function getPhontics(x) {
-	var m = S3.DoubleMetaphone(x);
+function getFuzzys(x) {
 	var h = [];
 	for (var i = 0; i < wordlist.length; i++) {
-		var n = S3.DoubleMetaphone(wordlist[i])
+		r = S3.fuzzyMatch(x, wordlist[i]);
+		if (r[0]) h.push([wordlist[i], r[1]]);
+	}
+	return h.sort(function(x,y){return y[1]-x[1];}).map(function(d){return {word:d[0], similarity:d[1]};});
+}
+
+function getPhontics(x) {
+	var m = S4.DoubleMetaphone(x);
+	var h = [];
+	for (var i = 0; i < wordlist.length; i++) {
+		var n = S4.DoubleMetaphone(wordlist[i])
 		if (m[0] == n[0] || m[1] == n[1]) {
 			h.push(wordlist[i]);
 		}
@@ -35,7 +45,7 @@ function getPhontics(x) {
 }
 
 function isNumbers(x) {
-	return /^[0-9\-/]+$/.test(x);
+	return /^[0-9\-/]+/.test(x);
 }
 
 function isWildCard(x) {
@@ -53,7 +63,7 @@ function getWildcards(x) {
 	for (var i = 0; i < wordlist.length; i++) {
 		if (re.test(wordlist[i])) {
 			c = c + 1;
-			result.push(wordlist[i]);
+			result.push({word:wordlist[i]});
 		}
 	}
 	return result;
@@ -64,6 +74,21 @@ function number_fmt(a) {
 	return a.toFixed(0)/100
 }
 
+function parseKWM(str) {
+	n = parseFloat(str);
+	if (str.toUpperCase().endsWith('K')) n = n * 1000;
+	else if (str.toUpperCase().endsWith('W')) n = n * 1000 * 10;
+	else if (str.toUpperCase().endsWith('M')) n = n * 1000 * 1000;
+	return n;
+}
+
+function isKWM(str) {
+	if (str.toUpperCase().endsWith('K')) return true;
+	else if (str.toUpperCase().endsWith('W')) return true;
+	else if (str.toUpperCase().endsWith('M')) return true;
+	else return false;
+}
+
 function short_explain(e) {
 	var a = e.join("; ")
 	if (a.length > 24) {
@@ -72,29 +97,65 @@ function short_explain(e) {
 	return a;
 }
 
-var args = process.argv.splice(2)
-word = args[0];
-if (word == '-v') {
+function show_words(words, a1, a2) {
+	ki = 30000;
+	ci = 20;
+	if (a1) {
+		if (isKWM(a1)) ki = parseKWM(a1);
+		else ci = parseInt(a1);
+	}
+	if (a2) {
+		if (isKWM(a2)) ki = parseKWM(a2);
+		else ci = parseInt(a2);
+	}
+
+	res = {};
+	s = 0;
+	words.forEach(function(x) {
+		if (s < ci && s < ki && wordmap[x.word]["i"][1] < ki) {
+			s++;
+			if (x.similarity) {
+				res[x.word] = [
+					wordmap[x.word]["i"][1], 
+					number_fmt(x.similarity), 
+					short_explain(wordmap[x.word]["e"])
+				];
+			} else {
+				res[x.word] = [
+					wordmap[x.word]["i"][1], 
+					short_explain(wordmap[x.word]["e"])
+				];
+			}
+		}
+	});
+	console.log(res);
+}
+
+var args = process.argv
+
+if (args[2] == '-v') {
 	console.log("h2dict 1.0 Ling Jianfa https://github.com/lingjf/h2dict.git");
-} else if (word == '-h') {
+} else if (args[2] == '-h') {
 	console.log("h2dict/dict/f staff", "查询单词staff");
 	console.log("h2dict/dict/f 'st?ff' 使用通配符搜索单词");
 	console.log("h2dict/dict/f 10 列举前10常用的单词");
 	console.log("h2dict/dict/f 1000-1110 列举1000到1110常用的单词");
 	console.log("h2dict/dict/f 1000/5 列举1000到1005常用的单词");
-} else if (isNumbers(word)) {
+} else if (args[1].endsWith("/ff")) {
+	show_words(getSimilars(args[2]), args[3], args[4]);
+} else if (args[1].endsWith("/fff")) {
+	show_words(getFuzzys(args[2]), args[3], args[4]);
+} else if (isWildCard(args[2])) {
+	show_words(getWildcards(args[2]), args[3], args[4]);
+} else if (isNumbers(args[2])) {
 	var start = 0;
 	var end = 0;
-	if (word.indexOf("-") != -1) {
-		var r1 = word.split("-");
-		start = parseInt(r1[0]);
-		end = parseInt(r1[1]);
-	} else if (word.indexOf("/") != -1) {
-		var r1 = word.split("/");
-		start = parseInt(r1[0]);
-		end = start + parseInt(r1[1]);
+
+	if (args[3]) {
+		start = parseKWM(args[2]);
+		end = parseKWM(args[3]) + start;
 	} else {
-		end = parseInt(word);
+		end = parseKWM(args[2]);
 	}
 	
 	r2 = {};
@@ -107,23 +168,8 @@ if (word == '-v') {
 		}
 	});
 	console.log(r2);
-} else if (isWildCard(word)) {
-	e1 = 30000;
-	if (args[1]) {
-		e1 = parseInt(args[1]);
-	}
-	r3 = getWildcards(word);
-	r4 = {};
-	r3.forEach(function(x){
-		if (wordmap[x]["i"][1] < e1) {
-			r4[x] = [
-				wordmap[x]["i"][1], 
-				short_explain(wordmap[x]["e"])
-			];
-		}
-	});
-	console.log(r4);
 } else {
+	word = args[2];
 	if (wordmap[word]) {
 		wout = {}
 		wout["解释"] = wordmap[word]["e"];
@@ -138,15 +184,6 @@ if (word == '-v') {
 		if (wordmap[word]["r"]) wout["相关字"] = wordmap[word]["r"];
 		console.log(wout);
 	} else {
-		r3 = getSimilars(word).slice(0,20);
-		r4 = {};
-		r3.forEach(function(x){
-			r4[x.word] = [
-				wordmap[x.word]["i"][1], 
-				number_fmt(x.similarity), 
-				short_explain(wordmap[x.word]["e"])
-			];
-		});
-		console.log(r4);
+		show_words(getSimilars(word));
 	}
 }

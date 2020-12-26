@@ -6,6 +6,8 @@
   "bin": {
     "h2dict": "index.js",
     "dict": "index.js",
-    "f": "index.js"
+    "f": "index.js",
+    "ff": "index.js",
+    "fff": "index.js"
   }
 }

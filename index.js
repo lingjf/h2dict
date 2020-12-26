@@ -133,9 +133,12 @@ function show_words(words, a1, a2) {
 
 var args = process.argv;
 
-if (args[2] == '-v') {
-	console.log("h2dict 1.1.0 https://github.com/lingjf/h2dict.git");
+if (!args[2]) {
+
+} else if (args[2] == '-v') {
+	console.log("h2dict 1.2.0 https://github.com/lingjf/h2dict.git");
 } else if (args[2] == '-h') {
+	console.log("");
 	console.log("h2dict/dict/f staff #查询单词staff");
 	console.log("h2dict/dict/f 'st?ff' #使用通配符搜索单词");
 	console.log("h2dict/dict/f 'st?ff' 1w # 使用通配符搜索1万常用单词，默认最多显示20个");
@@ -145,6 +148,7 @@ if (args[2] == '-v') {
 	console.log("ff stff # 使用编辑距离算法模糊搜索，默认最多显示20个最匹配的单词");
 	console.log("ff stff 1w 3 # 使用编辑距离算法，在前1万常用单词中模糊搜索，并显示前3个最匹配的单词");
 	console.log("fff stff 1w 3 # 使用类SublimeText矢量算法，在前1万常用单词中模糊搜索，并显示前3个最匹配的单词");
+	console.log("");
 } else if (args[1].endsWith("/ff")) {
 	show_words(getSimilars(args[2]), args[3], args[4]);
 } else if (args[1].endsWith("/fff")) {

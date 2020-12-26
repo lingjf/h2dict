@@ -7,7 +7,7 @@
 
 # 安装
 
-npm install h2dict -g # from npmjs.org
+npm install h2dict --registry https://registry.npm.taobao.org/ -g
 
 npm link # from source code
 

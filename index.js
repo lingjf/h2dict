@@ -3,6 +3,8 @@
 var S1 = require("./lcs.js");
 var S2 = require("./levenshtein.js");
 var S3 = require("./fts_fuzzy_match.js");
+// https://www.forrestthewoods.com/blog/reverse_engineering_sublime_texts_fuzzy_match/
+// https://github.com/forrestthewoods/lib_fts
 var S4 = require("./double_metaphone.js");
 
 var P = require("commander");
@@ -149,9 +151,9 @@ function show_words(words, a1, a2) {
   console.log(res);
 }
 
-P.version("h2dict 1.0.0 https://github.com/lingjf/h2dict.git")
-.option("-e, --edit_distance_fuzzy", "Fuzzy search with edit distance")
-.option("-v, --vector_fuzzy", "Fuzzy search with vector matches")
+P.version("h2dict 1.4.0 https://github.com/lingjf/h2dict.git")
+.option("-e, --levenshtein_fuzzy", "Fuzzy search with Levenshtein Edit Distance")
+.option("-v, --sublimetext_fuzzy", "Fuzzy search with Sublime Vector Matching")
 .parse(process.argv);
 
 var args = P.args;
@@ -171,9 +173,9 @@ if (!args[0]) {
 	console.log("");
 
 } else {
-	if (tool.endsWith("/ff") || P.edit_distance_fuzzy) {
+	if (tool.endsWith("/ff") || P.levenshtein_fuzzy) {
 		show_words(getSimilars(args[0]), args[1], args[2]);
-	} else if (tool.endsWith("/fff") || P.vector_fuzzy) {
+	} else if (tool.endsWith("/fff") || P.sublimetext_fuzzy) {
 		show_words(getFuzzys(args[0]), args[1], args[2]);
 	} else if (isWildCard(args[0])) {
 		show_words(getWildcards(args[0]), args[1], args[2]);

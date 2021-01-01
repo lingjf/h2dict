@@ -122,7 +122,7 @@ function show_words(words, a1, a2) {
   console.log(res);
 }
 
-P.version("h2dict 1.4.0 https://github.com/lingjf/h2dict.git")
+P.version("h2dict 1.5.0 https://github.com/lingjf/h2dict.git")
 .option("-e, --levenshtein_fuzzy", "Fuzzy search with Levenshtein Edit Distance")
 .option("-v, --sublimetext_fuzzy", "Fuzzy search with Sublime Vector Matching")
 .parse(process.argv);

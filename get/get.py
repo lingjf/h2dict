@@ -231,8 +231,11 @@ def generate(wordsort):
         t = {}
         t["w"] = word["word"]
         t["p"] = word["pronounces"]
-        t["e"] = word["explains"]
         t["i"] = word["seq"]
+        t["e"] = []
+        for y in word["explains"]:
+            if y != None:
+                t["e"].append(y)
         if "synonyms" in word and 0 < len(word["synonyms"]):
             t["s"] = word["synonyms"]
         if "family" in word and 0 < len(word["family"]):

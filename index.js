@@ -49,6 +49,10 @@ function isNumbers(x) {
   return /^[0-9\-/]+/.test(x);
 }
 
+function isChinese(c) {
+	return /[\u4e00-\u9fa5]/.test(c);
+}
+
 function isWildCard(x) {
   var result = -1;
   if (x) result = x.search(/[\*\?\[\]\^\$]/);
@@ -150,6 +154,20 @@ if (!args[0]) {
     show_words(getFuzzys(args[0]), args[1], args[2]);
   } else if (isWildCard(args[0])) {
     show_words(getWildcards(args[0]), args[1], args[2]);
+  } else if (isChinese(args[0])) {
+    cn = args[0]
+    res = wordlist.filter(function (a) {
+      var r = false;
+      for (var i = 0; i < a.e.length; i++) {
+        if (0 <= a.e[i].indexOf(cn)) {
+          a.e = [a.e[i]];
+          r = true;
+          break;
+        }
+      }
+      return r;
+    });
+    show_words(res, args[1], args[2]);
   } else if (isNumbers(args[0])) {
     var start = 0;
     var end = 0;

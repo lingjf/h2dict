@@ -11,6 +11,7 @@ km
 ft
 ad
 re
+en
 lb
 ma
 yon
@@ -131,3 +132,9 @@ albeit
 cannot
 working
 hast
+putt
+clearly
+entirely
+notwithstanding
+papa
+doth

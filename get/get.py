@@ -192,8 +192,12 @@ def mix_sort(elem):
         res = min(elem["freq_index"], res)
     if "bnc_index" in elem:
         res = min(elem["bnc_index"], res)
+    return res
+
+def fin_sort(elem):
+    res = elem["seq"]
     if "adjust_index" in elem:
-        res = min(elem["adjust_index"], res)
+        res = elem["adjust_index"]
     return res
 
 def sequence(wordmap):
@@ -206,7 +210,10 @@ def sequence(wordmap):
         wordsort1.append(wordmap[word])
     wordsort1.sort(key=mix_sort, reverse=False)
     for i, word in enumerate(wordsort1):
-        wordmap[word["word"]]["seq"] = i + 1
+        word["seq"] = i + 1
+    wordsort1.sort(key=fin_sort, reverse=False)
+    for i, word in enumerate(wordsort1):
+        word["seq"] = i + 1
     return wordsort1
     
 def build_family(wordmap):

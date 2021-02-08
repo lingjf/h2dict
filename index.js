@@ -118,6 +118,7 @@ function show_words(words, a1, a2) {
       } else {
         res[x.w] = [
           x.i,
+          x.p[0],
           short_explain(x.e),
         ];
       }
@@ -182,7 +183,7 @@ if (!args[0]) {
     r2 = {};
     wordlist.forEach(function (x, i) {
       if (start <= i && i < end) {
-        r2[x.w] = [x.i, short_explain(x.e)];
+        r2[x.w] = [x.i, x.p[0], short_explain(x.e)];
       }
     });
 

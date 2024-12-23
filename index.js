@@ -10,6 +10,7 @@ var S4 = require("./double_metaphone.js");
 var P = require("commander");
 
 var wordlist = require("./wordlist.json");
+var wordroot = require("./wordroot.json");
 
 function calcSimilarity(a, b) {
   //Similarity(A,B)=LCS(A,B)/(LD(A,B)+LCS(A,B))
@@ -139,17 +140,19 @@ if (!args[0]) {
   console.log("");
   console.log("h2dict/dict/f staff #查询单词staff");
   console.log("h2dict/dict/f 'st?ff' #使用通配符搜索单词");
-  console.log("h2dict/dict/f 'st?ff' 1w # 使用通配符搜索1万常用单词，默认最多显示20个" );
-  console.log("h2dict/dict/f 'st?ff' 1w 3 # 使用通配符搜索1万常用单词，并显示前3个" );
+  console.log("h2dict/dict/f 'st?ff' 1w # 使用通配符搜索1万常用单词,默认最多显示20个" );
+  console.log("h2dict/dict/f 'st?ff' 1w 3 # 使用通配符搜索1万常用单词,并显示前3个" );
   console.log("h2dict/dict/f 10 # 列举前10常用单词");
   console.log("h2dict/dict/f 1k 5 # 列举1000到1005常用单词");
-  console.log("h2dict/dict/f -e stff # 使用编辑距离算法模糊搜索，默认最多显示20个最匹配的单词" );
-  console.log("h2dict/dict/f -e stff 1w 3 # 使用编辑距离算法，在前1万常用单词中模糊搜索，并显示前3个最匹配的单词" );
-  console.log("h2dict/dict/f -v stff 1w 3 # 使用类SublimeText矢量算法，在前1万常用单词中模糊搜索，并显示前3个最匹配的单词" );
+  console.log("h2dict/dict/f -e stff # 使用编辑距离算法模糊搜索,默认最多显示20个最匹配的单词" );
+  console.log("h2dict/dict/f -e stff 1w 3 # 使用编辑距离算法,在前1万常用单词中模糊搜索,并显示前3个最匹配的单词" );
+  console.log("h2dict/dict/f -v stff 1w 3 # 使用类SublimeText矢量算法,在前1万常用单词中模糊搜索,并显示前3个最匹配的单词" );
   console.log("");
 
 } else {
-  if (tool.endsWith("/ff") || P.levenshtein_fuzzy) {
+  if (tool.endsWith("/f2")) {
+    console.log(wordroot)
+  } else if (tool.endsWith("/ff") || P.levenshtein_fuzzy) {
     show_words(getSimilars(args[0]), args[1], args[2]);
   } else if (tool.endsWith("/fff") || P.sublimetext_fuzzy) {
     show_words(getFuzzys(args[0]), args[1], args[2]);

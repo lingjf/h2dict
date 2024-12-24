@@ -1,6 +1,6 @@
 [
   ["acid", "acri", "酸、尖酸", "acid", "aciduldate", "acrimonious"],
-  ["aer", "aero", "aeri", "空气", "", "", ""],
+  ["aer", "aero", "aeri", "空气", "aerial", "aerify", "aerodrome", "aerolith", "aerology"],
 
   ["fright", "惊吓、恐怖", "frighten", "fright", "affright"],
 
@@ -20,5 +20,14 @@
   ["ign", "火", "ignite", "igneous", "ignition"],
   ["insul", "岛", "insulate", "peninsula", "insulin"],
   ["integr", "整体", "integrate", "integral"],
-  ["it", "行走", "ambit", "circuit", "initial", "transit"]
+  ["it", "行走", "ambit", "circuit", "initial", "transit"],
+
+  ["ject", "投、掷", "eject", "inject", "subject", "object", "project", "interject", "reject", "conject", "abject", "deject"],
+  ["journ", "日", "journal", "journey", "adjourn"],
+  ["jud", "判断", "judge", "prejudice", "judicial", "judicious"],
+  ["junct", "连接", "junction", "conjunction", "injunction", "juncture", "adjunct", "disjunct"],
+  ["joint", "连接", "joint", "disjoint", "conjoint", "jointure"],
+  ["jur", "法律", "jury", "jurisdiction", "perjure", "jurist", "injustice"],
+  ["just", "法律、规则、公正", "justice", "justify", "adjust", "injustice"],
+  ["juven", "年轻、少年", "juvenile", "juvenescence"]
 ]

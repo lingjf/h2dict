@@ -128,6 +128,20 @@ function show_words(words, a1, a2) {
   console.log(res);
 }
 
+function showline_wordroot(line) {
+  console.log(line);
+}
+function handle_wordroot(stem) {
+  for(const line of wordroot) {
+    for (const item of line) {
+      if(item == stem) {
+        showline_wordroot(line);
+        break;
+      }
+    }
+  }
+}
+
 P.version("h2dict 1.5.0 https://github.com/lingjf/h2dict.git")
 .option("-e, --levenshtein_fuzzy", "Fuzzy search with Levenshtein Edit Distance")
 .option("-v, --sublimetext_fuzzy", "Fuzzy search with Sublime Vector Matching")
@@ -151,7 +165,7 @@ if (!args[0]) {
 
 } else {
   if (tool.endsWith("/f2")) {
-    console.log(wordroot)
+    handle_wordroot(args[0]);
   } else if (tool.endsWith("/ff") || P.levenshtein_fuzzy) {
     show_words(getSimilars(args[0]), args[1], args[2]);
   } else if (tool.endsWith("/fff") || P.sublimetext_fuzzy) {

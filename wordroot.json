@@ -1,5 +1,24 @@
 [
-  [["acid", "acri"], ["acid", "aciduldate", "acrimonious"]],
+  ["acid", "acri", "酸、尖酸", "acid", "aciduldate", "acrimonious"],
+  ["aer", "aero", "aeri", "空气", "", "", ""],
 
-  [["fright"], ["frighten", "fright", "affright"]]
+  ["fright", "惊吓、恐怖", "frighten", "fright", "affright"],
+
+  ["hap", "运气、偶然", "happen", "指某事发生，通常带有偶然性", "happy", "快乐从来都是少有的事情", "perhaps", "mishap"],
+  ["habit", "居住", "habit", "inhabit", "inhabitant", "habitual", "habitant", "cohabit"],
+  ["hal", "呼吸", "exhale", "inhale", "halitosis"],
+  ["helic", "螺旋", "helicopter", "helical"],
+  ["herb", "草", "herb", "herbal", "herbivore"],
+  ["here", "hes", "粘", "adhere", "cohere", "inhere", "hesitate"],
+  ["hibit", "拿住", "exhibit", "inhibit", "prohibit"],
+  ["hospit", "宾客", "hospital", "hospitable"],
+  ["hum", "人、土、地", "human", "humble", "humour", "四种体液代表了一个人的脾气或心情", "inhume", "humanitarian", "..."],
+  ["hydr", "水、液体", "hydrogen", "hydrant", "carbohydrate"],
+
+  ["idio", "个体的、特殊的", "idiot", "idiom"],
+  ["idea", "ideo", "思想、观点", "idea", "ideal", "ideology", "ideograph"],
+  ["ign", "火", "ignite", "igneous", "ignition"],
+  ["insul", "岛", "insulate", "peninsula", "insulin"],
+  ["integr", "整体", "integrate", "integral"],
+  ["it", "行走", "ambit", "circuit", "initial", "transit"]
 ]

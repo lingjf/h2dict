@@ -1,6 +1,12 @@
 [
   ["acid", "acri", "酸、尖酸", "acid", "aciduldate", "acrimonious"],
   ["aer", "aero", "aeri", "空气", "aerial", "aerify", "aerodrome", "aerolith", "aerology"],
+  ["act", "ag", "做、行动", "act", "action", "exact", "activate", "active", "actual", "agenda", "agent", "agile", "agitate", "enact"],
+  ["agr", "农田", "agriculture", "agronomy", "agrarian"],
+  ["alt", "高度", "altar", "altimetry", "alto", "exalt"],
+  ["alter", "ali", "改变、其它", "alter", "alternate", "altercate", "alien", "alienate"],
+  ["am", "amat", "ami", "em", "爱", "amateur", "amiable", "amicable", "amorist", "enemy"],
+  ["ambul", "amble", "行走、走动", "ambulance", "ambulate", "ambulant", "perambulate", "amble", "preamble"],
 
   ["fright", "惊吓、恐怖", "frighten", "fright", "affright"],
 
@@ -44,9 +50,17 @@
   ["leg", "法律", "illegal", "legal", "legalize", "privilege"],
   ["lev", "lieve", "liv", "举、升、轻", "elevator", "lever", "leverage", "alleviate", "relieve", "deliver"],
   ["liber", "自由", "liberty", "liberal", "deliberate", "illiberal"],
+  ["lig", "捆、约束", "religious", "religion", "oblige", "obligate", "obligation", "negligence"],
   ["limin", "lim", "门槛、限制", "eliminate", "preliminary", "subliminal", "limit", "sublime"],
   ["lingu", "langu", "语言", "linguist", "bilingual", "language", "languid"],
   ["liqu", "液体", "liquid", "liquor", "liquefy", "liquescent"],
   ["liter", "字母", "literal", "obliterate", "illiterate"],
-  ["lith", "石头", "monolith"]
+  ["lith", "石头", "monolith"],
+  ["loc", "地方", "local", "locate", "allocate", "collocate", "locomotive", "dislocate", "relocate", "translocate"],
+  ["log", "logu", "说、言语、学科", "dialogue", "ideologue", "biology"],
+  ["long", "leng", "长", "prolong", "elongate", "longitude", "length"],
+  ["loqu", "locu", "说话", "eloquent", "soliloquy", "colloquial", "loquacious", "magniloquent", "elocution", "interlocutor"],
+  ["luc", "lust", "lumin", "光、亮", "lucent", "elucidate", "lucid", "translucent", "illustrate", "lustre", "lustrous", "illuminate", "luminous"],
+  ["lun", "月亮", "lunar", "sublunary", "lunation"],
+  ["lud", "玩、戏剧", "allude", "delude", "ludicrous"]
 ]

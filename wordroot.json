@@ -10,6 +10,7 @@
   ["helic", "螺旋", "helicopter", "helical"],
   ["herb", "草", "herb", "herbal", "herbivore"],
   ["here", "hes", "粘", "adhere", "cohere", "inhere", "hesitate"],
+  ["herit", "继承、遗传", "inherit", "heritage"],
   ["hibit", "拿住", "exhibit", "inhibit", "prohibit"],
   ["hospit", "宾客", "hospital", "hospitable"],
   ["hum", "人、土、地", "human", "humble", "humour", "四种体液代表了一个人的脾气或心情", "inhume", "humanitarian", "..."],
@@ -17,6 +18,7 @@
 
   ["idio", "个体的、特殊的", "idiot", "idiom"],
   ["idea", "ideo", "思想、观点", "idea", "ideal", "ideology", "ideograph"],
+  ["idol", "偶像、崇拜", "idol", "idolater", "idolatress", "idolatrous", "idolize"],
   ["ign", "火", "ignite", "igneous", "ignition"],
   ["insul", "岛", "insulate", "peninsula", "insulin"],
   ["integr", "整体", "integrate", "integral"],
@@ -29,5 +31,22 @@
   ["joint", "连接", "joint", "disjoint", "conjoint", "jointure"],
   ["jur", "法律", "jury", "jurisdiction", "perjure", "jurist", "injustice"],
   ["just", "法律、规则、公正", "justice", "justify", "adjust", "injustice"],
-  ["juven", "年轻、少年", "juvenile", "juvenescence"]
+  ["juven", "年轻、少年", "juvenile", "juvenescence"],
+
+  ["labor", "劳动", "elaborate", "laboratory", "laborious", "collaborate"],
+  ["laps", "倒下、消失", "collapse", "lapse", "elapse", "relapse"],
+  ["lat", "拿出、带出", "relate", "translate"],
+  ["later", "边、面", "lateral", "bilateral", "collateral", "unilateral", "multilateral", "equilateral", "quadrilateral", "trilateral"],
+  ["lax", "lys", "lyse", "lysi", "松", "relax", "analyse", "paralyse", "dialyse", "electrolysis"],
+  ["lav", "luv", "lut", "洗、冲洗", "..."],
+  ["lect", "leg", "lig", "选择、收集", "select", "elect", "collect", "intellect", "intellectual", "neglect", "idiolect", "elegant", "college", "eligible"],
+  ["leg", "读、指定", "delegate", "legate", "legend", "relegate"],
+  ["leg", "法律", "illegal", "legal", "legalize", "privilege"],
+  ["lev", "lieve", "liv", "举、升、轻", "elevator", "lever", "leverage", "alleviate", "relieve", "deliver"],
+  ["liber", "自由", "liberty", "liberal", "deliberate", "illiberal"],
+  ["limin", "lim", "门槛、限制", "eliminate", "preliminary", "subliminal", "limit", "sublime"],
+  ["lingu", "langu", "语言", "linguist", "bilingual", "language", "languid"],
+  ["liqu", "液体", "liquid", "liquor", "liquefy", "liquescent"],
+  ["liter", "字母", "literal", "obliterate", "illiterate"],
+  ["lith", "石头", "monolith"]
 ]

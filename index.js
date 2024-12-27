@@ -13,6 +13,8 @@ var chalk = require("chalk");
 
 var stringWidth = require("string-width");
 
+// var words = require('an-array-of-english-words')
+
 var wordlist = require("./wordlist.json");
 var wordroot = require("./wordroot.json");
 
@@ -162,19 +164,19 @@ function show_words(words, a1, a2) {
   // console.log(res);
 }
 
-function matchline_wordroot(line, arg) {
-  if (!arg) {
-    return true;
-  }
-  for (const item of line) {
-    if (isWildCard(arg)) {
-      var re = new RegExp("^" + arg.replace(/\*/g, ".*").replace(/\?/g, ".") + "$", "i");
-      if (re.test(item)) return true;
-    } else if (item.indexOf(arg) == 0) {
-      return true;
-    }
-    if (isChinese(item)) {
-      break;
+function matchline_wordroot(line) {
+  if (P.args.length == 0) return true;
+  for (const arg of P.args) {
+    for (const item of line) {
+      if (isWildCard(arg)) {
+        var re = new RegExp("^" + arg.replace(/\*/g, ".*").replace(/\?/g, ".") + "$", "i");
+        if (re.test(item)) return true;
+      } else if (item.indexOf(arg) == 0) {
+        return true;
+      }
+      if (isChinese(item)) {
+        break;
+      }
     }
   }
   return false;
@@ -282,8 +284,9 @@ function showpage_wordroot(line) {
   }
 }
 function handle_wordroot() {
+  // 如果多参数、参数是通配符表达式、没有精确匹配：则为列表模式
   var listable = true;
-  if (!isWildCard(P.args[0])) {
+  if (P.args.length == 1 && !isWildCard(P.args[0])) {
     for (const line of wordroot) {
       for (const item of line) {
         if (item == P.args[0]) {
@@ -295,7 +298,7 @@ function handle_wordroot() {
   }
   if (listable) {
     for (const line of wordroot) {
-      if (matchline_wordroot(line, P.args[0])) {
+      if (matchline_wordroot(line)) {
         showline_wordroot(line);
       }
     }
@@ -312,7 +315,7 @@ function handle_wordroot() {
   }
 }
 
-P.version("h2dict 1.5.0 https://github.com/lingjf/h2dict.git")
+P.version("h2dict 1.6.1 https://github.com/lingjf/h2dict.git")
   .option("-e, --levenshtein_fuzzy", "Fuzzy search with Levenshtein Edit Distance")
   .option("-v, --sublimetext_fuzzy", "Fuzzy search with Sublime Vector Matching")
   .option("-1, --without_stem", "Without 词根")
@@ -323,7 +326,11 @@ P.version("h2dict 1.5.0 https://github.com/lingjf/h2dict.git")
 var args = P.args;
 var tool = process.argv[1];
 
-if (tool.endsWith("/f2")) {
+if (tool.endsWith("/f1")) {
+  var p1 = args[0];
+  if (!isWildCard(args[0])) p1 = "*" + args[0] + "*";
+  show_words(getWildcards(p1), args[1], args[2]);
+} else if (tool.endsWith("/f2")) {
   handle_wordroot();
 } else if (tool.endsWith("/ff") || P.levenshtein_fuzzy) {
   show_words(getSimilars(args[0]), args[1], args[2]);

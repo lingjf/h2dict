@@ -1,0 +1,21 @@
+{
+  "家庭成员": ["father", "mother", "brother", "sister", "son", "daughter"],
+  "身体部位": ["head", "eye", "ear", "nose", "mouth", "tooth", "hand", "finger", "foot", "leg", "heart"],
+  "基本动作": ["run", "walk", "eat", "drink", "sleep", "wake", "stand", "sit", "go", "come", "take", "give"],
+  "自然现象": ["sun", "moon", "star", "sky", "wind", "rain", "snow", "cloud"],
+  "动植物": ["tree", "flower", "grass", "stone", "rock", "river", "sea", "mountain", "dog", "cat", "bird", "fish"],
+  "时间概念": ["day", "night", "morning", "afternoon", "evening", "year", "month", "week", "hour", "minute"],
+  "空间概念": ["up", "down", "in", "out", "on", "off", "under", "over", "behind", "before", "between"],
+  "情感": ["happy", "sad", "angry", "afraid", "love", "hate"],
+  "状态": ["hot", "cold", "hungry", "thirsty", "tired", "sick", "well"],
+  "数字": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
+  "食物与饮品": ["bread", "meat", "egg", "milk", "water", "beer", "wine"],
+  "房屋与家具": ["house", "room", "door", "window", "bed", "chair", "table", "wall"],
+  "衣服": ["shirt", "dress", "coat", "hat", "shoe", "sock"],
+  "工具与材料": ["wood", "iron", "stone", "knife", "axe", "hammer", "needle", "thread"],
+  "动词": ["make", "do", "see", "hear", "think", "know", "find", "lose", "pull", "push", "bode", "loan", "drive"],
+  "形容词": ["big", "small", "long", "short", "old", "new", "good", "bad", "fast", "slow", "fair"],
+  "社会角色": ["king", "queen", "lord", "lady", "man", "woman", "child"],
+  "文化活动": ["sing", "dance", "play", "work", "rest"],
+  "其他常用词汇": ["yes", "no", "and", "or", "but", "if", "for", "with", "without", "from", "to", "at", "by"]
+}

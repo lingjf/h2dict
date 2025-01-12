@@ -17,6 +17,8 @@ var stringWidth = require("string-width");
 
 var wordlist = require("./wordlist.json");
 var wordroot = require("./wordroot.json");
+var wordfixa = require("./wordfixa.json");
+var wordfixs = require("./wordfixs.json");
 
 function calcSimilarity(a, b) {
   //Similarity(A,B)=LCS(A,B)/(LD(A,B)+LCS(A,B))
@@ -164,7 +166,7 @@ function show_words(words, a1, a2) {
   // console.log(res);
 }
 
-function matchline_wordroot(line) {
+function matchline_wordstem(line) {
   if (P.args.length == 0) return true;
   for (const arg of P.args) {
     for (const item of line) {
@@ -181,7 +183,8 @@ function matchline_wordroot(line) {
   }
   return false;
 }
-function showline_wordroot(line) {
+
+function showline_wordstem(line) {
   var cs = process.stdout.columns;
   var ph = 0;
   for (var i = 0; i < line.length; i++) {
@@ -217,7 +220,7 @@ function showline_wordroot(line) {
   console.log("");
 }
 
-function showpage_wordroot(line) {
+function showpage_wordstem(line) {
   var ph = 0;
   var str1 = "";
   var insts = [];
@@ -283,11 +286,12 @@ function showpage_wordroot(line) {
     }
   }
 }
-function handle_wordroot() {
+
+function handle_wordstem(jsons) {
   // 如果多参数、参数是通配符表达式、没有精确匹配：则为列表模式
   var listable = true;
   if (P.args.length == 1 && !isWildCard(P.args[0])) {
-    for (const line of wordroot) {
+    for (const line of jsons) {
       for (const item of line) {
         if (item == P.args[0]) {
           listable = false;
@@ -297,17 +301,17 @@ function handle_wordroot() {
     }
   }
   if (listable) {
-    for (const line of wordroot) {
-      if (matchline_wordroot(line)) {
-        showline_wordroot(line);
+    for (const line of jsons) {
+      if (matchline_wordstem(line)) {
+        showline_wordstem(line);
       }
     }
   } else {
     const stem = P.args[0];
-    for (const line of wordroot) {
+    for (const line of jsons) {
       for (const item of line) {
         if (item == stem) {
-          showpage_wordroot(line);
+          showpage_wordstem(line);
           break;
         }
       }
@@ -315,7 +319,7 @@ function handle_wordroot() {
   }
 }
 
-P.version("h2dict 1.6.1 https://github.com/lingjf/h2dict.git")
+P.version("h2dict 1.6.2 https://github.com/lingjf/h2dict.git")
   .option("-e, --levenshtein_fuzzy", "Fuzzy search with Levenshtein Edit Distance")
   .option("-v, --sublimetext_fuzzy", "Fuzzy search with Sublime Vector Matching")
   .option("-1, --without_stem", "Without 词根")
@@ -331,10 +335,14 @@ if (tool.endsWith("/f1")) {
   if (!isWildCard(args[0])) p1 = "*" + args[0] + "*";
   show_words(getWildcards(p1), args[1], args[2]);
 } else if (tool.endsWith("/f2")) {
-  handle_wordroot();
-} else if (tool.endsWith("/ff") || P.levenshtein_fuzzy) {
+  handle_wordstem(wordroot);
+} else if (tool.endsWith("/f3")) {
+  handle_wordstem(wordfixa);
+} else if (tool.endsWith("/f4")) {
+  handle_wordstem(wordfixs);
+} else if (tool.endsWith("/f7") || P.levenshtein_fuzzy) {
   show_words(getSimilars(args[0]), args[1], args[2]);
-} else if (tool.endsWith("/fff") || P.sublimetext_fuzzy) {
+} else if (tool.endsWith("/f8") || P.sublimetext_fuzzy) {
   show_words(getFuzzys(args[0]), args[1], args[2]);
 } else {
   if (!args[0]) {
@@ -345,9 +353,13 @@ if (tool.endsWith("/f1")) {
     console.log("h2dict/dict/f 'st?ff' 1w 3 # 使用通配符搜索1万常用单词,并显示前3个");
     console.log("h2dict/dict/f 10 # 列举前10常用单词");
     console.log("h2dict/dict/f 1k 5 # 列举1000到1005常用单词");
-    console.log("h2dict/dict/f -e stff # 使用编辑距离算法模糊搜索,默认最多显示20个最匹配的单词");
-    console.log("h2dict/dict/f -e stff 1w 3 # 使用编辑距离算法,在前1万常用单词中模糊搜索,并显示前3个最匹配的单词");
-    console.log("h2dict/dict/f -v stff 1w 3 # 使用类SublimeText矢量算法,在前1万常用单词中模糊搜索,并显示前3个最匹配的单词");
+    console.log("h2dict/dict/f1 tract # 使用子串或通配符搜索单词");
+    console.log("h2dict/dict/f2 tract # 列出词根tract");
+    console.log("h2dict/dict/f3 ab # 列出前缀ab");
+    console.log("h2dict/dict/f4 able # 列出后缀able");
+    console.log("h2dict/dict/f7 stff # 使用编辑距离算法模糊搜索,默认最多显示20个最匹配的单词");
+    console.log("h2dict/dict/f7 stff 1w 3 # 使用编辑距离算法,在前1万常用单词中模糊搜索,并显示前3个最匹配的单词");
+    console.log("h2dict/dict/f8 stff 1w 3 # 使用类SublimeText矢量算法,在前1万常用单词中模糊搜索,并显示前3个最匹配的单词");
     console.log("");
   } else if (isWildCard(args[0])) {
     show_words(getWildcards(args[0]), args[1], args[2]);

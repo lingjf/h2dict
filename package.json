@@ -1,16 +1,18 @@
 {
   "name": "h2dict",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "repository": "http://registry.npmjs.org/h2dict",
   "main": "index.js",
   "bin": {
     "h2dict": "index.js",
     "dict": "index.js",
     "f": "index.js",
-    "ff": "index.js",
-    "fff": "index.js",
     "f1": "index.js",
-    "f2": "index.js"
+    "f2": "index.js",
+    "f3": "index.js",
+    "f4": "index.js",
+    "f7": "index.js",
+    "f8": "index.js"
   },
   "dependencies": {
     "commander": "~2.9.0",
